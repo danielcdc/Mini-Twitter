@@ -1,24 +1,19 @@
-<div class="container">
-    <mat-card class="login-card">
-        <mat-card-header>
-          <mat-card-title>Formulario de Login</mat-card-title>
-        </mat-card-header>
-                <mat-form-field appearance="outline">
-                    <mat-label>Usuario</mat-label>
-                    <input matInput placeholder="Introduce tu usuario" type="text">
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                    <mat-hint>Introduce tu usuario aquí</mat-hint>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="Introduce tu contraseña" type="password">
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                    <mat-hint>Introduce tu usuario aquí</mat-hint>
-                </mat-form-field>
-                
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-    </mat-card>    
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" class="container">
+  
+  <input type="email" [(ngModel)]="usuario.email" #em="ngModel" required [email]="true" />
+
+  <div [hidden]="em.valid || em.pristine" class="alert alert-danger">
+    <p *ngIf="em.errors?.required">El campo email es requerido.</p>
+    <p *ngIf="em.errors?.email">El campo email debe estar bien formado.</p>
+  </div>
+
+  <input type="password" [(ngModel)]="usuario.password" #pwd="ngModel" pattern="[0-9]{4,6}" required />
+
+  <div [hidden]="pwd.valid || pwd.pristine" class="alert alert-danger">
+      <p *ngIf="pwd.errors?.required"> El campo contraseña es requerido.</p>
+      <p *ngIf="pwd.errors?.pattern">La contraeña debe ser un número entre 4 y 6 dígitos</p>
+</div>
+  <input type="button" (click)="doLogin()" value="Login" />
+
+
 </div>
