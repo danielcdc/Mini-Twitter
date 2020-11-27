@@ -1,0 +1,18 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" class="container">
+    <mat-form-field>
+        <mat-label appearance="outline">Usuario</mat-label>
+        <input [(ngModel)]="registro.username" matInput placeholder="Usuario" #em="ngModel" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label appearance="outline">Contraseña</mat-label>
+        <input [(ngModel)]="registro.password" #pwd="ngModel" matInput placeholder="Contraseña" type="password" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label appearance="outline">Email</mat-label>
+        <input [(ngModel)]="registro.email" matInput placeholder="ejemplo@correo.es" type="mail">
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" (click)="doSignUp()"> Enviar </button>
+</div>
